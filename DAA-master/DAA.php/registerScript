@@ -1,0 +1,14 @@
+<?php
+session_start();
+require_once("Connection.php");
+if (isset($_POST['Register'])) {
+        $meno = $_POST['meno'];
+        $email = $_POST['email'];
+       $heslo = $_POST['heslo'];
+        
+}
+else
+{$sqli = "INSERT INTO users (username, email, password) VALUES ('$meno', '$email', '$heslo')";
+            $conn ->query($sqli);
+            header('Location: Login.html');
+}
