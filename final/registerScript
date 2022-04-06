@@ -1,0 +1,19 @@
+<?php
+session_start();
+require_once("Connection.php");
+
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+       $password = $_POST['password'];
+        $passwordcheck = $_POST['passwordcheck'];
+
+        $hashedPassword = MD5($_POST["password"]);
+        MD5($_POST['passwordcheck']);
+
+        if (!hash_equals($password, $passwordcheck)) {
+                echo "Hesla nie su zhodne";
+        
+        
+        
+ $sqli = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$hashedPassword')";
+            $conn ->query($sqli);
